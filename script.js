@@ -60,13 +60,31 @@ UserDataForm.addEventListener('submit',(e)=>{
     }
     
     else if(DuplicateId == true){
-        alert("Id already exists")
+        alert("Id already exists. Are you trying to update the data?")
+        let UserDetails = {
+            Id: e.target[0].value, 
+            Name: e.target[1].value,
+            Age: e.target[2].value
+        };
+        let Index = AllUsers.indexOf(CurrentData);
+        AllUsers[Index] = UserDetails;
+        DisplayData();
+        CurrentData = ""
+        CloseDataShowCase();
+        e.target[0].value = ""
+        e.target[1].value = ""
+        e.target[2].value = ""
+         
     }
     else{
         let UserDetails = {
             Id: e.target[0].value, 
             Name: e.target[1].value,
-            Age: e.target[2].value}
+            Age: e.target[2].value,
+        };
+        let Index = AllUsers.indexOf(CurrentData);
+         AllUsers[Index] = UserDetails;
+
     
     
         AllUsers.push(UserDetails)
@@ -78,9 +96,13 @@ UserDataForm.addEventListener('submit',(e)=>{
 });
 
 UpdateBtn.addEventListener("click",(e)=>{
-   UserDataForm.target[0]
+   UserDataForm.getElementsByTagName("input")[0].value = CurrentData.Id;
+   UserDataForm.getElementsByTagName("input")[1].value = CurrentData.Name;
+   UserDataForm.getElementsByTagName("input")[2].value = CurrentData.Age;
 })
 DeleteBtn.addEventListener("click",(e)=>{
    AllUsers.splice(AllUsers.indexOf(CurrentData),1);
    DisplayData();
+   CloseDataShowCase();
 })
+
