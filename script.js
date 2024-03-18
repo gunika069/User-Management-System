@@ -2,8 +2,10 @@ let UserDataForm = document.getElementById('UserDataForm');
 let UserList = document.getElementById('UserList');
 let UserDataShowCase = document.getElementById("UserDataShowCase")
 let Td = document.getElementsByTagName("td")
+let UpdateBtn = document.getElementById("UpdateBtn")
+let DeleteBtn = document.getElementById("DeleteBtn")
 let AllUsers = [];
-
+let CurrentData = "";
 
 
 function CloseDataShowCase(){
@@ -24,6 +26,7 @@ function ShowUserData(e){
 function handleClick(e){
     ShowUserData(e);
     OpenDataShowCase();
+    CurrentData = e;
 }
 
 
@@ -72,4 +75,11 @@ UserDataForm.addEventListener('submit',(e)=>{
         e.target[2].value='';
         DisplayData();
     }
+});
+
+UpdateBtn.addEventListener("click",(e)=>{
+   alert("Update")
+})
+DeleteBtn.addEventListener("click",(e)=>{
+   console.log(CurrentData)
 })
