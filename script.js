@@ -78,8 +78,9 @@ UserDataForm.addEventListener('submit',(e)=>{
 });
 
 UpdateBtn.addEventListener("click",(e)=>{
-   alert("Update")
+   UserDataForm.target[0]
 })
 DeleteBtn.addEventListener("click",(e)=>{
-   console.log(CurrentData)
+   AllUsers.splice(AllUsers.indexOf(CurrentData),1);
+   DisplayData();
 })
